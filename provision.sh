@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 source user.conf
 
 sudo apt-get update
@@ -17,10 +19,13 @@ sudo mkdir /data
 wget -P /data http://images.freeimages.com/images/large-previews/8d7/trees-in-the-snow-1524996.jpg
 sudo sed -ie 's/wallpaper=.*/wallpaper=\/data\/trees-in-the-snow-1524996.jpg/' /usr/share/lxde/pcmanfm/LXDE.conf
 
-cd /tmp/
-mkdir tmptmp
+mkdir /tmp/tmptmp
+cd /tmp/tmptmp
 git clone https://github.com/dalseides/vagrant-desktop.git
-source user.conf
+ls /tmp/tmptmp/vagrant-desktop
+source /tmp/tmptmp/vagrant-desktop/user.conf
+
+cat /tmp/tmptmp/vagrant-desktop/user.conf
 
 echo ----------------------
 echo $NEWUSER
@@ -29,7 +34,7 @@ echo doodeedoodeedoo
 sudo groupadd console
 sudo usermod -a -G console vagrant
 
-sudo rm -rf /tmp/tmptmp
+#sudo rm -rf /tmp/tmptmp
 
 sudo shutdown -r now
 #startlxde&
