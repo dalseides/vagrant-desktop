@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder "data/", "/vdata"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
   #
   #   # Customize the amount of memory on the VM:
      vb.memory = "4096"
-     vb.cpus = 4
+     vb.cpus = 2
      vb.customize ["modifyvm", :id, "--vram", "256"]
    end
   #
@@ -76,5 +76,5 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-   config.vm.provision "shell", path: "provision.sh"
+  config.vm.provision "shell", path: "provision.sh"
 end
